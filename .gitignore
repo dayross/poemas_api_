@@ -1,0 +1,4 @@
+
+## archivos a ignorar
+*.venv
+*ipynb_checkpoints
