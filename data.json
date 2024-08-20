@@ -1,0 +1,136 @@
+[
+    {
+        "poema": [
+            {
+                "nombre": "Contigo",
+                "autor": "Luis Cernuda",
+                "contenido": "\\¿Mi tierra?\nMi tierra eres tú.\n¿Mi gente?\nMi gente eres tú.\nEl destierro y la muerte\npara mi están adonde\nno estés tú.\n¿Y mi vida?\nDime, mi vida,\n¿qué es, si no eres tú?",
+                "extracto": false
+            },
+            {
+                "nombre": "Desvelada",
+                "autor": "Gabriela Mistral",
+                "contenido": "Como soy reina y fui mendiga, ahora\nvivo en puro temblor de que me dejes,\ny te pregunto, pálida, a cada hora:\n¿Estás conmigo aún? ¡Ay, no te alejes!\nQuisiera hacer las marchas sonriendo\ny confiando ahora que has venido;\npero hasta en el dormir estoy temiendo\ny pregunto entre sueños: ¿No te has ido?.",
+                "extracto": false
+            },
+            {
+                "nombre": "¡Oh, cuál te adoro!",
+                "autor": "Carolina Coronado",
+                "contenido": "¡Oh, cuál te adoro! Con la luz del día\ntu nombre invoco, apasionada y triste,\ny, cuando el cielo en sombras se reviste\naún te llama exaltada el alma mía.\nTú eres el tiempo que mis horas guía,\ntú eres la idea que a mi mente asiste,\nporque en ti se concentra cuanto existe,\nmi pasión, mi esperanza y mi poesía.\nNo hay canto que igualar pueda a tu acento,\ncuando tu amor me cuentas y deliras\nrevelando la fe de tu contento.\nTiemblo a tu voz y tiemblo si me miras,\ny quisiera exhalar mi último aliento\nabrasada en el aire que respiras.",
+                "extracto": false
+            },
+            {
+                "nombre": "Amor",
+                "autor": "Gustavo Adolfo Bécquer",
+                "contenido": "Podrá nublarse el sol eternamente;\nPodrá secarse en un instante el mar;\nPodrá romperse el eje de la tierra\nComo un débil cristal.\n¡Todo sucederá! Podrá la muerte\nCubrirme con su fúnebre crespón;\nPero jamás en mí podrá apagarse\nLa llama de tu amor.",
+                "extracto": false
+            },
+            {
+                "nombre": "A veces",
+                "autor": "Nicolás Guillén",
+                "contenido": "A veces tengo ganas de ser un cursi\npara decir: La amo a usted con locura.\nA veces tengo ganas de ser tonto\npara gritar: ¡La quiero tanto!\nA veces tengo ganas de ser un niño\npara llorar acurrucado en su seno.\nA veces tengo ganas de estar muerto\npara sentir, bajo la tierra húmeda de mis jugos,\nque me crece una flor rompiéndome el pecho,\nuna flor, y decir: Esta flor,\npara usted.",
+                "extracto": false
+            },
+            {
+                "nombre": "Amor",
+                "autor": "Salvador Novo",
+                "contenido": "Amar es percibir, cuando te ausentas,\ntu perfume en el aire que respiro,\ny contemplar la estrella en que te alejas\ncuando cierro la puerta de la noche",
+                "extracto": true
+            },
+            {
+                "nombre": "Y sin embargo te quiero",
+                "autor": "Joaquín Sabina",
+                "contenido": "Te quiero más que a mis ojos,\nte quiero más que a mi vida,\nmás que al aire que respiro\ny más que a la madre mía.\nQue se me paren los pulsos\nsi te dejo de querer,\nque las campanas me doblen\nsi te falto alguna vez.",
+                "extracto": true
+            },
+            {
+                "nombre": "¿Qué es el amor",
+                "autor": "Anónimo",
+                "contenido": "¿Qué es el amor? si no es lo que siento por ti.\n¿Qué es el dolor? si no es lo que siento cuando estás lejos de mí.\n¿Quién soy yo sin ti?",
+                "extracto": false
+            },
+            {
+                "nombre": "Madrigal",
+                "autor": "Manuel del Palacio",
+                "contenido": "Me miraste, alma mía,\ny fue tal mi alegría\ny es mi pasión tan loca,\nque sentir me parece todavía\nel beso de tus ojos en mi boca.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "Marcela Novoa",
+                "contenido": "Me asusta la manera en que te amo,\nes como si antes de ti no hubiera nada\ny después de ti tampoco.",
+                "extracto": false
+            }
+        ]
+    },
+    {
+        "haiku": [
+            {
+                "nombre": "",
+                "autor": "",
+                "contenido": "Es imposible\nolvidar su cariño;\nme hace falta.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "",
+                "contenido": "Al abrazarnos\nun suspiro de placer\nme estremece.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "",
+                "contenido": "Salen del pecho,\nlatidos del corazon\npara ti… por ti.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "",
+                "contenido": "Lo dices así,\nbonito y sencillo\ncomo eres tú.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "",
+                "contenido": "Paso los días\npensando en tu amor;\nmi melodía.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "Santos Vera Guayama",
+                "contenido": "Tu mirada de mar\ncálida y húmeda\ntas la tormenta",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "",
+                "contenido": "Alma gemela;\nsiento tu cariño\nsólo para mí.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "",
+                "contenido": "La felicidad\nes aquí, a su lado,\ncon su sonrisa.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "",
+                "contenido": "Entre tú y yo\nhemos descubierto\nformas del amor.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "",
+                "contenido": "Dices que nunca\npodrías olvidarme;\ny yo tampoco.",
+                "extracto": false
+            },
+            {
+                "nombre": "",
+                "autor": "Mariela",
+                "contenido": "Por tu cariño\nveo todo posible,\nestás conmigo.",
+                "extracto": false
+            }
+        ]
+    }
+]

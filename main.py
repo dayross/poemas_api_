@@ -1,10 +1,14 @@
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, HTTPException
 
 from enum import Enum
 
 from typing import Union, Annotated
 
 from pydantic import BaseModel
+
+import json , random
+
+from fastapi.responses import JSONResponse
 
 class TiposTexto(str, Enum):
     poema = "poema"
@@ -19,6 +23,9 @@ class TextoEntity(BaseModel):
 
 
 poemas = FastAPI()
+
+file = open('data.json')
+data = json.load(file)
 
 @poemas.get("/")
 def root():
@@ -95,5 +102,31 @@ def dar_tipos_texto(texto : Annotated[str | None, Query(max_length=20)] = None):
 #         resultado.update({'contenido' : texto})
 #     return resultado
 
+@poemas.get("/{tipo_texto}/random")
+def random_texto(tipo_texto : TiposTexto):
+    i = 3
+    if tipo_texto=="poema":
+        i = 0
+    elif tipo_texto=="haiku":
+        i = 1
+    else:
+        i = 2
+    try:
+        with open("data.json", "r", encoding="UTF-8") as file:
+            data = json.loads(file.read())[i]
+
+        if not data:
+            raise HTTPException(status_code=404, detail="No hay texto disponible")
+        
+        resp = random.choice(data[tipo_texto])["contenido"]
+
+        return JSONResponse(content=resp, media_type="application/json; charset=utf-8")
+        
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="No se encontró la fuente de datos")
     
+@poemas.get("/example")
+async def example():
+    content = {"message": "Este es un texto en UTF-8: áéíóú ñ"}
+    return JSONResponse(content=content, media_type="application/json; charset=utf-8")
     
