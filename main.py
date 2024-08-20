@@ -24,16 +24,44 @@ class TextoEntity(BaseModel):
 
 poemas = FastAPI()
 
-file = open('data.json')
-data = json.load(file)
 
 @poemas.get("/")
 def root():
-    return {"message" : "Diana Rocío"}
+    return """Esta es la API de textos romanticos. Creada por @dayross"""
 
-@poemas.get("/autor")
+@poemas.get("/autores")
 def autor():
-    return {"autor" : "DEFAULT"}
+    lista_autores = []
+    try:
+        with open("data.json", "r", encoding="UTF-8") as file:
+            data = json.loads(file.read())
+
+        if not data:
+            raise HTTPException(status_code=404, detail="No hay texto disponible")
+        
+        i = 0
+        for x in data:
+            if i == 0:
+                tipo_texto = "poema"
+            elif i == 1:
+                tipo_texto = "haiku"
+            else:
+                tipo_texto = "frase"
+            for y in x[tipo_texto]:
+                actual_autor = y["autor"]
+                print(actual_autor)
+                if actual_autor not in lista_autores:
+                    print('added')
+                    lista_autores.append(actual_autor)
+            i +=1
+
+        return JSONResponse(content=lista_autores, media_type="application/json; charset=utf-8")
+                
+        # return JSONResponse(content=data[0]["poema"][1]["autor"], media_type="application/json; charset=utf-8")
+    
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="No se encontró la fuente de datos")
+
 
 @poemas.get("/autor/{autor_name}")
 def autor(autor_name : str):
