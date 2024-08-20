@@ -25,6 +25,31 @@ class TextoEntity(BaseModel):
 poemas = FastAPI()
 
 
+try:
+    with open("data.json", "r", encoding="UTF-8") as file:
+            data = json.loads(file.read())
+    if not data:
+            raise HTTPException(status_code=404, detail="No hay texto disponible")
+except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="No se encontró la fuente de datos")
+        
+
+def texto_a_numero(texto : TiposTexto):
+    if texto is TiposTexto.poema:
+         return 0
+    elif texto is TiposTexto.haiku:
+         return 1
+    else:
+         return 2
+    
+def numero_a_texto(numero : int):
+     if numero == 0:
+          return TiposTexto.poema
+     elif numero == 1:
+          return TiposTexto.haiku
+     else:
+          return TiposTexto.frase
+
 @poemas.get("/")
 def root():
     return """Esta es la API de textos romanticos. Creada por @dayross"""
@@ -32,36 +57,18 @@ def root():
 @poemas.get("/autores")
 def autor():
     lista_autores = []
-    try:
-        with open("data.json", "r", encoding="UTF-8") as file:
-            data = json.loads(file.read())
-
-        if not data:
-            raise HTTPException(status_code=404, detail="No hay texto disponible")
-        
-        i = 0
-        for x in data:
-            if i == 0:
-                tipo_texto = "poema"
-            elif i == 1:
-                tipo_texto = "haiku"
-            else:
-                tipo_texto = "frase"
-            for y in x[tipo_texto]:
-                actual_autor = y["autor"]
-                print(actual_autor)
-                if actual_autor not in lista_autores:
-                    print('added')
-                    lista_autores.append(actual_autor)
-            i +=1
-
-        return JSONResponse(content=lista_autores, media_type="application/json; charset=utf-8")
-                
-        # return JSONResponse(content=data[0]["poema"][1]["autor"], media_type="application/json; charset=utf-8")
     
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="No se encontró la fuente de datos")
+    i = 0
+    for x in data:
+        tipo_texto = numero_a_texto(i)
+        for y in x[tipo_texto]:
+            actual_autor = y["autor"]
+            if actual_autor not in lista_autores and actual_autor != "":
+                lista_autores.append(actual_autor)
+        i +=1
 
+    return JSONResponse(content=lista_autores, media_type="application/json; charset=utf-8")
+                
 
 @poemas.get("/autor/{autor_name}")
 def autor(autor_name : str):
@@ -69,30 +76,31 @@ def autor(autor_name : str):
 
 @poemas.get("/tipo/{tipo_texto}")
 def tipos(tipo_texto : TiposTexto):
-    if tipo_texto is TiposTexto.poema:
-        return {"tipo de texto" : tipo_texto,
-                tipo_texto : {
-                    "titulo" : "Amor",
-                    "content" : """ Todos los que amo están en ti y tú en todo lo que amo.""",
-                    "autor" : "Claribel Alegría"}}
-    if tipo_texto.value == "frase":
-        return {"tipo de texto" : tipo_texto,
-                tipo_texto : {
-                    "content" : """Contigo siempre lo que con nadie nunca.""",
-                    "autor" : "El Arrebato"}}
-    if tipo_texto.value == "haiku":
-        return {"tipo de texto" : tipo_texto,
-                tipo_texto : {
-                    "content" : """No estoy en mí. 
-                                    Perderte es extraviarme
-                                    Hallarte hallarme.""",
-                    "autor" : "Antonio Zirión Quijano"}}
+    return JSONResponse(content=data[tipo_texto], media_type="application/json; charset=utf-8")
+#     if tipo_texto is TiposTexto.poema:
+#         return {"tipo de texto" : tipo_texto,
+#                 tipo_texto : {
+#                     "titulo" : "Amor",
+#                     "content" : """ Todos los que amo están en ti y tú en todo lo que amo.""",
+#                     "autor" : "Claribel Alegría"}}
+#     if tipo_texto.value == "frase":
+#         return {"tipo de texto" : tipo_texto,
+#                 tipo_texto : {
+#                     "content" : """Contigo siempre lo que con nadie nunca.""",
+#                     "autor" : "El Arrebato"}}
+#     if tipo_texto.value == "haiku":
+#         return {"tipo de texto" : tipo_texto,
+#                 tipo_texto : {
+#                     "content" : """No estoy en mí. 
+#                                     Perderte es extraviarme
+#                                     Hallarte hallarme.""",
+#                     "autor" : "Antonio Zirión Quijano"}}
 
-fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
+# fake_items_db = [{"item_name": "Foo"}, {"item_name": "Bar"}, {"item_name": "Baz"}]
 
-@poemas.get("/items/")
-def varios_poemas(skip : int = 0, limit : int = 0):
-    return fake_items_db[skip : skip + limit]
+# @poemas.get("/items/")
+# def varios_poemas(skip : int = 0, limit : int = 0):
+#     return fake_items_db[skip : skip + limit]
 
 
 @poemas.get("/texto/{tipo_texto}/autor/{autor}")
@@ -139,20 +147,12 @@ def random_texto(tipo_texto : TiposTexto):
         i = 1
     else:
         i = 2
-    try:
-        with open("data.json", "r", encoding="UTF-8") as file:
-            data = json.loads(file.read())[i]
+    resp = random.choice(data[i][tipo_texto])["contenido"]
 
-        if not data:
-            raise HTTPException(status_code=404, detail="No hay texto disponible")
+    return JSONResponse(content=resp, media_type="application/json; charset=utf-8")
         
-        resp = random.choice(data[tipo_texto])["contenido"]
 
-        return JSONResponse(content=resp, media_type="application/json; charset=utf-8")
-        
-    except FileNotFoundError:
-        raise HTTPException(status_code=404, detail="No se encontró la fuente de datos")
-    
+
 @poemas.get("/example")
 async def example():
     content = {"message": "Este es un texto en UTF-8: áéíóú ñ"}
