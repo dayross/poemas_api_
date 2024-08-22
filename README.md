@@ -1,5 +1,5 @@
 # poemas API
-
+### La API esta disponible en linea en https://poemas-api.onrender.com 🩷
 Una API que entrega textos cortos con tintes romanticos o relacionados a cosas de amor (poemas, frases, haikus).
 
 estado de la API : coahuila (apenas estoy aprendiendo a hacer la API).
@@ -12,7 +12,7 @@ los textos seran solo en español y cortos, y la API será de uso público y gra
 1. tener python y un ambiente virtual para python
 2. en el ambiente virtual (o venv) hacer:
 
-	pip install "fastapi[all]" 
+	pip install -r requirements.txt
 
 3. dar uvicorn main:poemas --reload
 4. verlo en el localhost
