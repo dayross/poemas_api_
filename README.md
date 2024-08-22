@@ -2,7 +2,7 @@
 ### La API esta disponible en linea en https://poemas-api.onrender.com 🩷
 Una API que entrega textos cortos con tintes romanticos o relacionados a cosas de amor (poemas, frases, haikus).
 
-estado de la API : coahuila (apenas estoy aprendiendo a hacer la API).
+estado de la API : completada y aceptando sugerencias para endpoints.
 
 los textos seran solo en español y cortos, y la API será de uso público y gratuito :3c
 
