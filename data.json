@@ -136,13 +136,12 @@
             "autor": "Mariela",
             "contenido": "Por tu cariño veo todo posible, estás conmigo.",
             "extracto": false
-         },
-         {
-            "nombre": "haiku haiku",
-            "autor": "Creado por Diana Rocio",
-            "contenido": "Este es el contenido del nuevo poema.",
-            "extracto": true
          }
+      ]
+   },
+   {
+      "frases":[
+         
       ]
    }
 ]
